@@ -21,12 +21,13 @@ app = FastAPI(title="Smriti API", version="0.2.0", description="BDH memory layer
 
 _default_cors = (
     "http://localhost:3000,http://localhost:3001,"
-    "http://127.0.0.1:3000,http://127.0.0.1:3001"
+    "http://127.0.0.1:3000,http://127.0.0.1:3001,"
+    "https://smriti-six.vercel.app"
 )
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in os.getenv("CORS_ORIGINS", _default_cors).split(",") if o.strip()],
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|smriti-six\.vercel\.app)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
